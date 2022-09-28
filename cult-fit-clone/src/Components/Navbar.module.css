@@ -1,0 +1,6 @@
+.nav{
+    position: sticky;    
+    top: 0;
+    background: rgb(22,25,33);    
+    margin: auto;
+}
