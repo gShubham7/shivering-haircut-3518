@@ -1,50 +1,55 @@
-import React from 'react'
+import React from "react";
 import {
-    Drawer,
-    DrawerBody,
-    DrawerFooter,
-    DrawerHeader,
-    DrawerOverlay,
-    DrawerContent,
-    DrawerCloseButton,
-    Button,Input,useDisclosure
-  } from '@chakra-ui/react'
-
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  Image,
+  useDisclosure,
+  Button,
+  Input,
+} from "@chakra-ui/react";
 
 function DrawerExample() {
-    const { isOpen, onOpen, onClose } = useDisclosure()
-    const btnRef = React.useRef()
-  
-    return (
-      <>
-        <Button ref={btnRef} colorScheme='teal' onClick={onOpen}>
-          Open
-        </Button>
-        <Drawer
-          isOpen={isOpen}
-          placement='right'
-          onClose={onClose}
-          finalFocusRef={btnRef}
-        >
-          <DrawerOverlay />
-          <DrawerContent>
-            <DrawerCloseButton />
-            <DrawerHeader>Create your account</DrawerHeader>
-  
-            <DrawerBody>
-              <Input placeholder='Type here...' />
-            </DrawerBody>
-  
-            <DrawerFooter>
-              <Button variant='outline' mr={3} onClick={onClose}>
-                Cancel
-              </Button>
-              <Button colorScheme='blue'>Save</Button>
-            </DrawerFooter>
-          </DrawerContent>
-        </Drawer>
-      </>
-    )
-  }
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const btnRef = React.useRef();
 
-  export { DrawerExample }
+  return (
+    <>
+      <Image
+        src="https://static.cure.fit/assets/images/cart-icon-new.svg"
+        alt="cart"
+        ref={btnRef}
+        colorScheme="teal"
+        onClick={onOpen}
+      />
+      <Drawer
+        isOpen={isOpen}
+        placement="right"
+        onClose={onClose}
+        finalFocusRef={btnRef}
+        blockScrollOnMount={false}
+      >
+        <DrawerContent mt={10}>
+          <DrawerCloseButton />
+          <DrawerHeader>Your cart</DrawerHeader>
+
+          <DrawerBody>
+            {/* Cart Item's will be displayed here */}
+          </DrawerBody>
+
+          <DrawerFooter bg="white">
+            <Button w="full" bg="#FF3278" size={10} p={1}>
+              BUY NOW
+            </Button>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
+    </>
+  );
+}
+
+export { DrawerExample };
