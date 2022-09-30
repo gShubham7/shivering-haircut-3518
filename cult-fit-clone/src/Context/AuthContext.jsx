@@ -3,13 +3,15 @@ import React from "react";
 export const AuthContext = React.createContext();
 
 function AuthContextProvider({ children }) {
-  const [isAuth, setIsAuth] = React.useState(true);
+  const [isAuth, setIsAuth] = React.useState(false);
+  const [contact, setContact] = React.useState("");
 
-  const toggleAuth = () => {
+  const toggleAuth = (val) => {
     setIsAuth(!isAuth);
+    setContact(val);
   };
   return (
-    <AuthContext.Provider value={{ isAuth, toggleAuth }}>
+    <AuthContext.Provider value={{ isAuth, toggleAuth, contact, setContact }}>
       {children}
     </AuthContext.Provider>
   );

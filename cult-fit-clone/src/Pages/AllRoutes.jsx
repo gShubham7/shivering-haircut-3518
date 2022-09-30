@@ -1,8 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 //import Products from "./Users";
-import ProductDetails from "./ProductDetails";
-import PageNotFound from "./NotFoundPage";
-import PrivateRoute from "../Components/PrivateRoute";
+import { Home } from "./Home"
+import {ProductDetails} from "./ProductDetails";
+//import PageNotFound from "./NotFoundPage";
+import {PrivateRoute} from "../Components/PrivateRoute";
 
 function AllRoutes() {
   return (
@@ -17,16 +18,17 @@ function AllRoutes() {
         }
       ></Route> */}
       <Route
-        path="/products/:product_id"
+        path="/productdetails"
         element={
           <PrivateRoute>
             <ProductDetails />
           </PrivateRoute>
         }
-      ></Route>      
-      <Route path="*" element={<PageNotFound />} />
+      >
+        </Route>      
+      {/* <Route path="*" element={<PageNotFound />} /> */}
     </Routes>
   );
 }
 
-export default AllRoutes;
+export {AllRoutes};

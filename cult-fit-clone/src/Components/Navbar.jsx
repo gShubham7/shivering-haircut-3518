@@ -4,13 +4,12 @@ import {
   Flex,
   Box,
   Spacer,
-  ButtonGroup,
-  Button,
   Image,
 } from "@chakra-ui/react";
 
 import { LoginModal } from "./LoginModal";
 import { DrawerExample } from "./CartDrawer";
+import { NavLink } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -27,11 +26,13 @@ function Navbar() {
         fontFamily="sans-serif"
         fontSize="13px"
       >
+        <NavLink to="/">
         <Image
           height={7}
           src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_135,ar_3.87,q_auto:eco,dpr_2,f_auto,fl_progressive//image/test/brand-logo/cultsport-black-logo.svg"
           alt="logo"
         />
+        </NavLink>
 
         <Spacer />
         <Box>Best Sellers</Box>
