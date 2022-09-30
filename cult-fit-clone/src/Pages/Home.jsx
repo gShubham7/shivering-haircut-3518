@@ -1,37 +1,15 @@
 import React from "react";
+import { data } from "../Components/data"
+import { Link } from "react-router-dom";
 import { ImageSlider } from "../Components/ImageSlider";
 import { FAQAccordian } from "../Components/FAQAccordian";
-import { ProductAddToCart } from "../Components/Product";
-import { Flex, Grid, GridItem, Box } from "@chakra-ui/react";
-
-const data = [
-  {
-    imageURL:
-      "https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_300,h_400,ar_0.75,c_fill/dpr_2/cultgear-content/ifxQqSatbw9anqJsmG1eo1SA",
-    name: "Flomo Women Running Shoe",
-    price: 2794,
-  },
-  {
-    imageURL:
-      "https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_300,h_400,ar_0.75,c_fill/dpr_2/cultgear-content/mU1dZAHqT6pjRn55ZWYvq6Mf",
-    name: "FormFit High Impact Ivy Sports Bra",
-    price: 1624,
-  },
-  {
-    imageURL:
-      "https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_300,h_400,ar_0.75,c_fill/dpr_2/cultgear-content/8vVR6uLBQSmX2vMsh6hfkXT2",
-    name: "Vitals Running T-Shirt",
-    price: 974,
-  },
-  {
-    imageURL:
-      "https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_300,h_400,ar_0.75,c_fill/dpr_2/cultgear-content/anBREptvxVED3KMUSXcPpTen",
-    name: "Seamless Ombre Tights",
-    price: 1049,
-  },
-];
+import { ProductCard } from "../Components/Product";
+import { Grid, Box } from "@chakra-ui/react";
 
 function Home() {
+  // React.useEffect(() => {
+  //   setSearchParams();
+  // }, []);
   return (
     <div style={{width:'100%'}}>
       <ImageSlider />
@@ -53,11 +31,13 @@ function Home() {
       {
         <Grid templateColumns={["repeat(2, 1fr)","repeat(3, 1fr)","repeat(4, 1fr)"]} w="90%" margin="auto">
           {data.map((item) => (
-            <ProductAddToCart
+            <Link to="/productdetails">
+            <ProductCard key={item.id}
               imageURL={item.imageURL}
               name={item.name}
               price={item.price}
             />
+            </Link>
           ))}
         </Grid>
       }
@@ -79,7 +59,7 @@ function Home() {
       {
         <Grid templateColumns="repeat(4, 1fr)" w="90%" margin="auto">
           {data.map((item) => (
-            <ProductAddToCart
+            <ProductCard key={item.id}
               imageURL={item.imageURL}
               name={item.name}
               price={item.price}
@@ -102,7 +82,7 @@ function Home() {
       {
         <Grid templateColumns="repeat(4, 1fr)" w="90%" margin="auto">
           {data.map((item) => (
-            <ProductAddToCart
+            <ProductCard key={item.id}
               imageURL={item.imageURL}
               name={item.name}
               price={item.price}
@@ -125,7 +105,7 @@ function Home() {
       {
         <Grid templateColumns="repeat(4, 1fr)" w="90%" margin="auto">
           {data.map((item) => (
-            <ProductAddToCart
+            <ProductCard key={item.id}
               imageURL={item.imageURL}
               name={item.name}
               price={item.price}
@@ -148,7 +128,7 @@ function Home() {
       {
         <Grid templateColumns="repeat(4, 1fr)" w="90%" margin="auto">
           {data.map((item) => (
-            <ProductAddToCart
+            <ProductCard key={item.id}
               imageURL={item.imageURL}
               name={item.name}
               price={item.price}
@@ -171,7 +151,7 @@ function Home() {
       {
         <Grid templateColumns="repeat(4, 1fr)" w="90%" margin="auto">
           {data.map((item) => (
-            <ProductAddToCart
+            <ProductCard key={item.id}
               imageURL={item.imageURL}
               name={item.name}
               price={item.price}
@@ -194,7 +174,7 @@ function Home() {
       {
         <Grid templateColumns="repeat(4, 1fr)" w="90%" margin="auto">
           {data.map((item) => (
-            <ProductAddToCart
+            <ProductCard key={item.id}
               imageURL={item.imageURL}
               name={item.name}
               price={item.price}
@@ -217,7 +197,7 @@ function Home() {
       {
         <Grid templateColumns="repeat(4, 1fr)" w="90%" margin="auto">
           {data.map((item) => (
-            <ProductAddToCart
+            <ProductCard key={item.id}
               imageURL={item.imageURL}
               name={item.name}
               price={item.price}
@@ -240,7 +220,7 @@ function Home() {
       {
         <Grid templateColumns="repeat(4, 1fr)" w="90%" margin="auto">
           {data.map((item) => (
-            <ProductAddToCart
+            <ProductCard key={item.id}
               imageURL={item.imageURL}
               name={item.name}
               price={item.price}

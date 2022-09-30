@@ -1,33 +1,13 @@
 import {
   Flex,
-  Circle,
   Box,
   Image,
-  Badge,
   useColorModeValue,
-  Icon,
   chakra,
   Tooltip,
 } from "@chakra-ui/react";
-import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
-//import { FiShoppingCart } from 'react-icons/fi';
 
-// const data = {
-//   isNew: true,
-//   imageURL:
-//     "https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_300,h_400,ar_0.75,c_fill/dpr_2/cultgear-content/ifxQqSatbw9anqJsmG1eo1SA",
-//   name: "Wayfarer Classic",
-//   price: 4.5,
-//   rating: 4.2,
-//   numReviews: 34,
-// };
-
-//   interface RatingProps {
-//     rating: number;
-//     numReviews: number;
-//   }
-
-function ProductAddToCart({ imageURL, name, price }) {
+function ProductCard({ imageURL, name, price }) {
   return (
     <Flex p={3} w="100%" alignItems="center" justifyContent="center">
       <Box
@@ -48,7 +28,6 @@ function ProductAddToCart({ imageURL, name, price }) {
               fontWeight="semibold"
               as="h4"
               lineHeight="tight"
-              isTruncated
               textAlign="left"
             >
               {name}
@@ -87,4 +66,4 @@ function ProductAddToCart({ imageURL, name, price }) {
   );
 }
 
-export { ProductAddToCart };
+export { ProductCard };

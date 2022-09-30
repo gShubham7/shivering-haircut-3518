@@ -4,17 +4,19 @@ import {
   DrawerBody,
   DrawerFooter,
   DrawerHeader,
-  DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
   Image,
   useDisclosure,
   Button,
-  Input,
+  Box,
+  Text
 } from "@chakra-ui/react";
+import { CartContext } from "../CartContext/CartContext";
 
 function DrawerExample() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const {cart} = React.useContext(CartContext);
   const btnRef = React.useRef();
 
   return (
@@ -23,7 +25,6 @@ function DrawerExample() {
         src="https://static.cure.fit/assets/images/cart-icon-new.svg"
         alt="cart"
         ref={btnRef}
-        colorScheme="teal"
         onClick={onOpen}
       />
       <Drawer
@@ -37,8 +38,16 @@ function DrawerExample() {
           <DrawerCloseButton />
           <DrawerHeader>Your cart</DrawerHeader>
 
-          <DrawerBody>
+          <DrawerBody textAlign={'center'}>
             {/* Cart Item's will be displayed here */}
+            {cart.length===0 ? (
+              <Box>
+              <Image margin={'auto'} src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,q_auto:eco,dpr_2,f_auto,fl_progressive//image/temp/cart/empty-cart-dark-theme.svg" alt="cart-img"/>
+              <Text textAlign={'center'}>Your cart is empty</Text>
+              </Box>
+            ) : (
+              "asd"
+            )}
           </DrawerBody>
 
           <DrawerFooter bg="white">
