@@ -106,7 +106,7 @@ export function ProductDetails() {
                 <Link to="/checkout">
                   <Button
                     borderRadius={30}
-                    w={"350px"}
+                    w={"300px"}
                     color={"white"}
                     fontWeight={"bold"}
                     fontSize={"xs"}
