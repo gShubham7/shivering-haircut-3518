@@ -10,13 +10,15 @@ import {
   useDisclosure,
   Button,
   Box,
-  Text
+  Text,
+  Flex,
 } from "@chakra-ui/react";
 import { CartContext } from "../CartContext/CartContext";
+import { Link } from "react-router-dom";
 
-function DrawerExample() {
+function CartDrawer() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const {cart} = React.useContext(CartContext);
+  const { cart } = React.useContext(CartContext);
   const btnRef = React.useRef();
 
   return (
@@ -38,27 +40,69 @@ function DrawerExample() {
           <DrawerCloseButton />
           <DrawerHeader>Your cart</DrawerHeader>
 
-          <DrawerBody textAlign={'center'}>
+          <DrawerBody textAlign={"center"}>
             {/* Cart Item's will be displayed here */}
-            {cart.length===0 ? (
+            {cart.length === 0 ? (
               <Box>
-              <Image margin={'auto'} src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,q_auto:eco,dpr_2,f_auto,fl_progressive//image/temp/cart/empty-cart-dark-theme.svg" alt="cart-img"/>
-              <Text textAlign={'center'}>Your cart is empty</Text>
+                <Image
+                  margin={"auto"}
+                  src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,q_auto:eco,dpr_2,f_auto,fl_progressive//image/temp/cart/empty-cart-dark-theme.svg"
+                  alt="cart-img"
+                />
+                <Text textAlign={"center"}>Your cart is empty</Text>
               </Box>
             ) : (
-              "asd"
+              cart?.map((item) => (
+                <Box>
+                  <Flex p={5}>
+                    <Image
+                      src={item.imageURL}
+                      w={"100px"}
+                      borderRadius={"10px"}
+                    />
+                    <Box>
+                      <Text
+                        fontSize={"xs"}
+                        color={"grey"}
+                        ml={5}
+                        textAlign={"left"}
+                      >
+                        cultsport
+                      </Text>
+                      <Text
+                        fontSize={"xs"}
+                        fontWeight={"bold"}
+                        textAlign={"left"}
+                        ml={5}
+                      >
+                        {item.name}
+                      </Text>
+                      <Text
+                        fontSize={"xs"}
+                        fontWeight={"bold"}
+                        textAlign={"left"}
+                        ml={5}
+                      >
+                        ₹ {item.price}
+                      </Text>
+                    </Box>
+                  </Flex>
+                  <hr />
+                </Box>
+              ))
             )}
           </DrawerBody>
-
-          <DrawerFooter bg="white">
-            <Button w="full" bg="#FF3278" size={10} p={1}>
-              BUY NOW
-            </Button>
-          </DrawerFooter>
+          <Link to="/checkout">
+            <DrawerFooter bg="white">
+              <Button w="100%" bg="#FF3278" size={10} p={1}>
+                BUY NOW
+              </Button>
+            </DrawerFooter>
+          </Link>
         </DrawerContent>
       </Drawer>
     </>
   );
 }
 
-export { DrawerExample };
+export { CartDrawer };

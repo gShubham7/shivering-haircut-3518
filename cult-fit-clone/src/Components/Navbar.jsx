@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 
 import { LoginModal } from "./LoginModal";
-import { DrawerExample } from "./CartDrawer";
+import { CartDrawer } from "./CartDrawer";
 import { NavLink } from "react-router-dom";
 
 function Navbar() {
@@ -48,7 +48,7 @@ function Navbar() {
 
         <Box display="flex" alignItems="center" gap={5}>
           {LoginModal()}
-          {DrawerExample()}
+          {CartDrawer()}
         </Box>
       </Flex>
     </div>

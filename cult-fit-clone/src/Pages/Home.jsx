@@ -1,5 +1,6 @@
 import React from "react";
-import { data } from "../Components/data"
+//import { data } from "../Components/data"
+import { getData } from "../Components/api";
 import { Link } from "react-router-dom";
 import { ImageSlider } from "../Components/ImageSlider";
 import { FAQAccordian } from "../Components/FAQAccordian";
@@ -7,11 +8,27 @@ import { ProductCard } from "../Components/Product";
 import { Grid, Box } from "@chakra-ui/react";
 
 function Home() {
+  const [data, setData] = React.useState([]);
+  // const [searchParams, setSearchParams] = React.useSearchParams;
+  // const i = searchParams.get()
+  // console.log(i)
+  React.useEffect(() => {
+    fetchData();
+  }, []);
+
   // React.useEffect(() => {
-  //   setSearchParams();
-  // }, []);
+  //   setSearchParams({ product_id });
+  // }, [product_id])
+
+  const fetchData = () => {
+    getData()
+      .then((res) => setData(res.data))
+      .catch((err) => console.log(err))
+      .finally(() => console.log("call completed"));
+  };
+
   return (
-    <div style={{width:'100%'}}>
+    <div style={{ width: "100%" }}>
       <ImageSlider />
       {
         <Box boxSize="88%" margin="auto" textAlign="left" mt={5}>
@@ -29,14 +46,23 @@ function Home() {
         </Box>
       }
       {
-        <Grid templateColumns={["repeat(2, 1fr)","repeat(3, 1fr)","repeat(4, 1fr)"]} w="90%" margin="auto">
+        <Grid
+          templateColumns={[
+            "repeat(2, 1fr)",
+            "repeat(3, 1fr)",
+            "repeat(4, 1fr)",
+          ]}
+          w="90%"
+          margin="auto"
+        >
           {data.map((item) => (
-            <Link to="/productdetails">
-            <ProductCard key={item.id}
-              imageURL={item.imageURL}
-              name={item.name}
-              price={item.price}
-            />
+            <Link to={`/${item.id}`} key={item.id + 8}>
+              <ProductCard
+                key={item.id}
+                imageURL={item.imageURL}
+                name={item.name}
+                price={item.price}
+              />
             </Link>
           ))}
         </Grid>
@@ -59,7 +85,8 @@ function Home() {
       {
         <Grid templateColumns="repeat(4, 1fr)" w="90%" margin="auto">
           {data.map((item) => (
-            <ProductCard key={item.id}
+            <ProductCard
+              key={item.id + 1}
               imageURL={item.imageURL}
               name={item.name}
               price={item.price}
@@ -82,7 +109,8 @@ function Home() {
       {
         <Grid templateColumns="repeat(4, 1fr)" w="90%" margin="auto">
           {data.map((item) => (
-            <ProductCard key={item.id}
+            <ProductCard
+              key={item.id + 2}
               imageURL={item.imageURL}
               name={item.name}
               price={item.price}
@@ -105,7 +133,8 @@ function Home() {
       {
         <Grid templateColumns="repeat(4, 1fr)" w="90%" margin="auto">
           {data.map((item) => (
-            <ProductCard key={item.id}
+            <ProductCard
+              key={item.id + 3}
               imageURL={item.imageURL}
               name={item.name}
               price={item.price}
@@ -128,7 +157,8 @@ function Home() {
       {
         <Grid templateColumns="repeat(4, 1fr)" w="90%" margin="auto">
           {data.map((item) => (
-            <ProductCard key={item.id}
+            <ProductCard
+              key={item.id + 4}
               imageURL={item.imageURL}
               name={item.name}
               price={item.price}
@@ -151,7 +181,8 @@ function Home() {
       {
         <Grid templateColumns="repeat(4, 1fr)" w="90%" margin="auto">
           {data.map((item) => (
-            <ProductCard key={item.id}
+            <ProductCard
+              key={item.id + 5}
               imageURL={item.imageURL}
               name={item.name}
               price={item.price}
@@ -174,7 +205,8 @@ function Home() {
       {
         <Grid templateColumns="repeat(4, 1fr)" w="90%" margin="auto">
           {data.map((item) => (
-            <ProductCard key={item.id}
+            <ProductCard
+              key={item.id + 6}
               imageURL={item.imageURL}
               name={item.name}
               price={item.price}
@@ -197,7 +229,8 @@ function Home() {
       {
         <Grid templateColumns="repeat(4, 1fr)" w="90%" margin="auto">
           {data.map((item) => (
-            <ProductCard key={item.id}
+            <ProductCard
+              key={item.id + 7}
               imageURL={item.imageURL}
               name={item.name}
               price={item.price}
@@ -220,7 +253,8 @@ function Home() {
       {
         <Grid templateColumns="repeat(4, 1fr)" w="90%" margin="auto">
           {data.map((item) => (
-            <ProductCard key={item.id}
+            <ProductCard
+              key={item.id + 8}
               imageURL={item.imageURL}
               name={item.name}
               price={item.price}
