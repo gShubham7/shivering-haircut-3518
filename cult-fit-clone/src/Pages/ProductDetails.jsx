@@ -1,4 +1,6 @@
 import React from "react";
+import { Link, Navigate, useParams } from "react-router-dom";
+import { singleProductData } from "../Components/api";
 import { CartContext } from "../CartContext/CartContext";
 import {
   Box,
@@ -20,17 +22,18 @@ import {
 import { MdLocalShipping } from "react-icons/md";
 
 export function ProductDetails() {
-  const [product, setProduct] = React.useState({
-    name:"",
-    price:"",
-    img:""
-  });
-  const {cart, handleCart} = React.useContext(CartContext);
+  const { product_id } = useParams();
+  const { cart, handleCart } = React.useContext(CartContext);
+  const [product, setProduct] = React.useState({});
 
-  const handleClick = ()=>{
-    setProduct()
-    handleCart(product)
-  }
+  React.useEffect(() => {
+    singleProductData(product_id).then((res) => setProduct(res.data));
+  }, [product_id]);
+
+  const handleClick = () => {
+    handleCart(product);
+  };
+
   return (
     <Container maxW={"7xl"} textAlign={"left"} mt={-20}>
       <SimpleGrid
@@ -42,9 +45,7 @@ export function ProductDetails() {
           <Image
             rounded={"md"}
             alt={"product image"}
-            src={
-              "https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_500,ar_3:4,c_fill/dpr_2/cultgear-content/8vVR6uLBQSmX2vMsh6hfkXT2"
-            }
+            src={product.imageURL}
             fit={"cover"}
             align={"center"}
             w={"100%"}
@@ -59,14 +60,14 @@ export function ProductDetails() {
               fontWeight={600}
               fontSize={{ base: "xl", sm: "2xl", lg: "3xl" }}
             >
-              Vitals Running T-Shirt
+              {product.name}
             </Heading>
             <Text
               color={useColorModeValue("pink.500", "red.400")}
               fontWeight={"bold"}
               fontSize={"2xl"}
             >
-              ₹ 974{" "}
+              ₹ {product.price}{" "}
               <Badge bg="orange" fontSize={"md"}>
                 35% OFF
               </Badge>
@@ -95,24 +96,26 @@ export function ProductDetails() {
                   color={"white"}
                   fontWeight={"bold"}
                   fontSize={"xs"}
-                  w={"48%"}
+                  w={"350px"}
                   borderRadius={30}
                   _hover={{ bg: "teal" }}
                   onClick={handleClick}
                 >
                   ADD TO CART
                 </Button>
-                <Button
-                  borderRadius={30}
-                  w={"48%"}
-                  color={"white"}
-                  fontWeight={"bold"}
-                  fontSize={"xs"}
-                  bg={"#F83F45"}
-                  _hover={{ bg: "teal" }}
-                >
-                  VIEW CART
-                </Button>
+                <Link to="/checkout">
+                  <Button
+                    borderRadius={30}
+                    w={"350px"}
+                    color={"white"}
+                    fontWeight={"bold"}
+                    fontSize={"xs"}
+                    bg={"#F83F45"}
+                    _hover={{ bg: "teal" }}
+                  >
+                    VIEW CART
+                  </Button>
+                </Link>
               </Flex>
             </VStack>
             <Box>
