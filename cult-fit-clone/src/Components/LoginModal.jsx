@@ -71,7 +71,7 @@ function LoginModal() {
               <Text w="80%" fontSize="xs" margin="auto" mt={14} color="grey">
                 Please enter the code we just sent to {contact} to proceed
               </Text>
-              <HStack mt={10} mb={10}>
+              <HStack mt={10} mb={10} justifyContent={'center'}>
                 <PinInput mask onChange={(e)=>{setOTP(e)}}>
                   <PinInputField />
                   <PinInputField />
